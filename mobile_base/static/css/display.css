@@ -1,0 +1,32 @@
+
+    /* Add custom CSS styles for your table here */
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+    }
+
+    .table th,
+    .table td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .table thead {
+        background-color: #f2f2f2;
+    }
+
+    .table th {
+        background-color: #333;
+        color: white;
+    }
+
+    footer {
+        background-color: #333; /* Background color */
+        color: #fff; /* Text color */
+        padding: 20px 0; /* Padding top and bottom */
+        text-align: center; /* Center-align text */
+    }
+    

@@ -1,0 +1,42 @@
+/* Custom styling for the container */
+.custom-container {
+    background-color: #f0f0f0; /* Choose your desired background color */
+    padding: 10px; /* Adjust the padding as needed */
+    margin: 10px; /* Adjust the margin as needed */
+}
+
+/* Custom styling for tab links */
+.nav-tabs .nav-link {
+    font-size: 1rem; /* Adjust the font size as needed (e.g., fs-2) */
+}
+
+/* Custom styling for tab content */
+.tab-pane {
+    font-size: 1rem; /* Adjust the font size as needed (e.g., fs-2) */
+}
+
+/* Custom styling for buttons */
+.btn {
+    font-size: 1rem; /* Adjust the font size as needed (e.g., fs-2) */
+}
+
+/* Additional custom styles can be added as needed */
+.tab-content{
+    margin-top: 20px;
+}
+#account-settings{
+    display: grid;
+    grid-template-rows: auto;
+    row-gap: 20px;
+    padding: 30px;
+    justify-content: center;
+}
+#acc_btn_div_tab{
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+#acc_btn_tab{
+    width:180px;
+    height: 50px;
+}
