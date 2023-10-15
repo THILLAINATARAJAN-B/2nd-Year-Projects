@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>Contact List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/display.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="p-3 m-0 border-0 bd-example m-0 border-0">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/home">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/insert">Add Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/display">My Contacts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/setting">Settings</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1>My Contacts</h1>
+        </div>
+        <div class="col-6 text-right">
+            <p>Total Contacts: {{ mobile_numbers|length }}</p>
+            <p id="filteredContactsCount">Number of Results: 0</p>
+        </div>
+    </div>
+</div>
+<div class="container mt-3 rounded p-3"
+     style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); background-color:#333;color:aliceblue">
+    <div class="form-group">
+        <label for="search">Search:</label>
+        <input type="text" class="form-control" id="search" placeholder="Search Here">
+    </div>
+    <br>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Options</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" style="border-radius: 5px;">
+            <option selected>Choose...</option>
+            <option value="1" selected>Name</option>
+            <option value="2">Mobile Number</option>
+            <option value="3">Town</option>
+            <option value="4">State</option>
+            <option value="5">Country</option>
+        </select>
+    </div>
+    <div class="input-group-append">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="searchBtn">Search</button>
+        <button type="button" class="btn btn-outline-light" id="resetBtn">Reset</button>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <table class="table table-bordered" id="contactTable">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Mobile Number</th>
+            <th>Town</th>
+            <th>State</th>
+            <th>Country</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for mobile_number in mobile_numbers %}
+        <tr class="contact-row">
+            <td>{{ mobile_number[1] }}</td>
+            <td>{{ mobile_number[2] }}</td>
+            <td>
+                {% if mobile_number[3] %}
+                    {{ mobile_number[3] }}
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+            <td>
+                {% if mobile_number[4] %}
+                    {{ mobile_number[4] }}
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+            <td>
+                {% if mobile_number[5] %}
+                    {{ mobile_number[5] }}
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+    <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
+      <div class="row">
+        <div class="col-lg-3 mb-3">
+          <a class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="/home" aria-label="Mobilebase">
+            <span class="fs-5">Mobile Base</span>
+          </a>
+          <ul class="list-unstyled small">
+            <li class="mb-2">Get your contacts in any devise,simply by login to your account</li>
+            <li class="mb-2">Has a secure and privacy access to your account and can keep your contacts and information in a secure data base</li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 offset-lg-1 mb-3">
+          <h5>Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="/home">Home</a></li>
+            <li class="mb-2"><a href="/insert">Add Contacts</a></li>
+            <li class="mb-2"><a href="/display">My contacts</a></li>
+            <li class="mb-2"><a href="/setting">Setting</a></li>            
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Guides</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="/home">Getting started</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 mb-3">
+          <h5>Community</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><p>Mobi Base</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#searchBtn").click(function () {
+            var searchTerm = $("#search").val().toLowerCase();
+            var selectedOption = $("#inputGroupSelect01").val();
+
+            $("table tbody tr").each(function () {
+                var cellText = $(this).find("td:nth-child(" + selectedOption + ")").text().toLowerCase();
+
+                if (selectedOption === '0' || cellText.includes(searchTerm)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+
+        $("#resetBtn").click(function () {
+            $("#search").val(""); // Clear the search input
+            $("table tbody tr").show(); // Show all rows
+        });
+
+        // Handle change event of the select dropdown to reset the search
+        $("#inputGroupSelect01").change(function () {
+            $("#search").val(""); // Clear the search input
+            $("table tbody tr").show(); // Show all rows
+        });
+    });
+
+</script>
+
+</body>
+</html>

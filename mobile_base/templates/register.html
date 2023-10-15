@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>Register</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="p-3 m-0 border-0 bd-example m-0 border-0">
+    <!-- Display error message in a red alert bar -->
+    {% if error_message %}
+    <div class="alert alert-danger">
+        {{ error_message }}
+    </div>
+    {% endif %}
+
+    <!-- Rest of your HTML content -->
+    <div class="container">
+        <h1>REGISTER HERE</h1>
+        <!-- registration form -->
+        <form method="POST">
+            <div class="form-group row">
+                <label for="colFormLabelLg1" class="col-sm-2 col-form-label col-form-label-lg">User Name</label>
+                <div class="col-sm-10">
+                  <input type="text" name="username" class="form-control form-control-lg" id="colFormLabelLg1" placeholder="Enter Your Name"  required>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="colFormLabelLg2" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
+                <div class="col-sm-10">
+                  <input type="email" name="email" class="form-control form-control-lg" id="colFormLabelLg2" placeholder="Enter Your Email" required>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="colFormLabelLg3" class="col-sm-2 col-form-label col-form-label-lg">Password</label>
+                <div class="col-sm-10">
+                  <input type="password" name="password" class="form-control form-control-lg" id="colFormLabelLg3" placeholder="Enter Your Password" required>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="confirmPassword" class="col-sm-2 col-form-label col-form-label-lg">Confirm Password</label>
+                <div class="col-sm-10">
+                  <input type="password" name="confirm_password" class="form-control form-control-lg" id="confirmPassword" placeholder="Confirm Password" required>
+                </div>
+            </div>
+            <br>
+            
+            <button class="btn btn-primary" type="submit">Register</button>
+        </form>
+    </div>
+
+    <!-- Register link -->
+    <div class="text-center mt-3">
+        Do you have an account? <a class="login-pg" href="/login">login</a>
+    </div>
+    <br>
+    <!--Back to Mobile Base-->
+    <div class="text-center">
+        <p>Back to Main Page</p>
+        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href = '/';">Home Page</button>
+    </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            $('.alert-danger').remove(); // Remove error message after 1 second
+        }, 10000); // Adjust the delay time as needed
+    });
+</script>
+</body>
